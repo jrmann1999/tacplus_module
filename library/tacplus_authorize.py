@@ -4,15 +4,49 @@
 # GNU General Public License v3.0+ (see copying or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 DOCUMENTATION = r'''
+---
+module: tacplus_authorize
 
+short_description: A modules to test TACACS authorization (with a command)
+
+version_added: "1.0.0"
+
+description: A module used to test TACACS authorization, with a command, against Cisco ISE servers
+
+options:
+    tac_username:
+        description: Username to authorize
+        required: true
+        type: str
+    tac_server:
+        description: Server IP to test this agains
+        required: true
+        type: str
+    tac_secret:
+        description: The secret to encrypt TACACS communication with the server
+        required: true
+        type: str
+    tac_command:
+        description: The command to authorize on the server
+        required: true
+        type:str
+
+author:
+    - Jeremy Mann (@jrmann1999)
 '''
 
 EXAMPLES = r'''
-
+# Authorization test with command
+- name: Authorization Test (show version)
+      tacplus_authorize:
+        tac_username: 'USER'
+        tac_server: 'IP'
+        tac_secret: "{{ credentials.tacsecret }}"
+        tac_command: 'show version'
 '''
 
 RETURN = r'''
-
+Returns a message with success or failure
 '''
 
 from ansible.module_utils.basic import AnsibleModule
