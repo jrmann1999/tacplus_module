@@ -1,0 +1,31 @@
+---
+- name: Test collection import
+  hosts: localhost
+  gather_facts: False
+  vars_files:
+    - "credentials.yml"
+  tasks:
+    - name: Authentication Test
+      cdw.tacplus.tacplus_authenticate:
+        tac_username: 'USER'
+        tac_password: "{{ credentials.password }}"
+        tac_server: 'IP'
+        tac_secret: "{{ credentials.tacsecret }}"
+      register: testout
+      no_log: True
+
+    - name: Dump output
+      debug:
+        msg: '{{ testout }}'
+
+    - name: Authorization Test (show version)
+      cdw.tacplus.tacplus_authorize:
+        tac_username: 'USER'
+        tac_server: 'IP'
+        tac_secret: "{{ credentials.tacsecret }}"
+        tac_command: 'show version'
+      register: testout
+
+    - name: Dump output
+      debug:
+        msg: '{{ testout }}'
