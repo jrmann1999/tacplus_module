@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright: (c) 2022, Jeremy Mann <jeremy.richard.mann@cdw.com>
+# Copyright: (c) 2022, Jeremy Mann <jeremy.richard.mann@gmail.com>
 # GNU General Public License v3.0+ (see copying or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 DOCUMENTATION = r'''
