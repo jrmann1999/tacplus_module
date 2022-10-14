@@ -6,7 +6,7 @@
     - "credentials.yml"
   tasks:
     - name: Authentication Test
-      cdw.tacplus.tacplus_authenticate:
+      tacplus_authenticate:
         tac_username: 'USER'
         tac_password: "{{ credentials.password }}"
         tac_server: 'IP'
@@ -19,7 +19,7 @@
         msg: '{{ testout }}'
 
     - name: Authorization Test (show version)
-      cdw.tacplus.tacplus_authorize:
+      tacplus_authorize:
         tac_username: 'USER'
         tac_server: 'IP'
         tac_secret: "{{ credentials.tacsecret }}"
